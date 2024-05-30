@@ -12,6 +12,8 @@ declare namespace UIScaler {
 
 	export interface usePxApi {
 		(value: number): number;
+		position: (x: number, y: number) => UDim2;
+		unscale: (value: number) => number;
 	}
 }
 

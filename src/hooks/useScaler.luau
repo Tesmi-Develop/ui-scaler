@@ -22,9 +22,18 @@ local function CalculateScale(viewport: Vector2, baseResolution: Vector2)
     return 2 ^ centered
 end
 
+local function CalculatePosition(vector: Vector2, viewport: Vector2, baseResolution: Vector2)
+    local width = math.log(viewport.X / baseResolution.X, 2)
+    local height = math.log(viewport.Y / baseResolution.Y, 2)
+
+    return Vector2.new(math.round(vector.X * 2 ^ width), math.round(vector.Y * 2 ^ height))
+end
+
 local function useScaler(baseResolution: Vector2)
     local camera = useCamera()
-	local bindingScale, setScale = React.useBinding(CalculateScale(camera.ViewportSize, baseResolution))
+	local bindingScale, setScale = React.useBinding(React.useMemo(function() 
+        return CalculateScale(camera.ViewportSize, baseResolution) 
+    end, {}))
 
     useEventListener(camera:GetPropertyChangedSignal("ViewportSize"), function()
         setScale(CalculateScale(camera.ViewportSize, baseResolution))
@@ -38,7 +47,13 @@ local function useScaler(baseResolution: Vector2)
 
                 return React.useMemo(function()
                     local api = {
-
+                        position = function(x: number, y: number)
+                            local vector = CalculatePosition(Vector2.new(x, y), camera.ViewportSize, baseResolution)
+                            return UDim2.fromOffset(vector.X, vector.Y)
+                        end;
+                        unscale = function(value: number)
+                            return math.round(value / scale)
+                        end
                     }
 
                     setmetatable(api, {
@@ -48,7 +63,7 @@ local function useScaler(baseResolution: Vector2)
                     })
 
                     return api
-                end, { scale })
+                end, { scale, baseResolution })
             end;
         }
     end)
