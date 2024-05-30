@@ -1,6 +1,6 @@
 {
-    "name": "refx",
-    "tree": {
-      "$path": "src"
-    }
-  }
+	"name": "ui-scaler",
+	"tree": {
+		"$path": "src"
+	}
+}
