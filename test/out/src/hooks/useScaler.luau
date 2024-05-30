@@ -1,9 +1,9 @@
 local React = require(script.Parent.Parent.modules.React)
-local useBindingState = require(script.Parent.useBindingState).useBindingState
+local useBindingState = require(script.Parent.useBindingState)
 local useCamera = require(script.Parent.useCamera)
-local useEventListener = require(script.Parent.useEventListener).useEventListener
+local useEventListener = require(script.Parent.useEventListener)
 
-local function GetDominantAxis(viewport: Vector2, baseAspectRatio: number)
+function GetDominantAxis(viewport: Vector2, baseAspectRatio: number)
     local aspectRatio = viewport.Y / viewport.X
     
     if baseAspectRatio > aspectRatio then
@@ -13,7 +13,7 @@ local function GetDominantAxis(viewport: Vector2, baseAspectRatio: number)
     return aspectRatio > baseAspectRatio and 0 or 0.5
 end
 
-local function CalculateScale(viewport: Vector2, baseResolution: Vector2)
+function CalculateScale(viewport: Vector2, baseResolution: Vector2)
     local width = math.log(viewport.X / baseResolution.X, 2)
     local height = math.log(viewport.Y / baseResolution.Y, 2)
     local dominantAxis = GetDominantAxis(viewport, baseResolution.Y / baseResolution.X)
