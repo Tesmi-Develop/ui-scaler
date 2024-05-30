@@ -1,3 +1,7 @@
 _G[script.modules.Promise] = _G[script]
 
-return {}
+local useScaler = require(script.hooks.useScaler)
+
+return {
+	useScaler = useScaler
+}
