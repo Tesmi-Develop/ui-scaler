@@ -1,5 +1,3 @@
-local React = require(script.Parent.Parent.modules.React)
-local createBinding = React.createBinding
 --[[
 	*
 	 * Returns whether the given value is a binding.
@@ -15,22 +13,7 @@ local function isBinding(value)
 	end
 	return _condition
 end
---[[
-	*
-	 * Converts a value to a binding. If the given value is already a binding, it
-	 * will be returned as-is.
-	 * @param value The value to convert.
-	 * @returns The converted binding.
-	 
-]]
-local function toBinding(value)
-	if isBinding(value) then
-		return value
-	else
-		local result = createBinding(value)
-		return result
-	end
-end
+
 --[[
 	*
 	 * Returns the value of a binding. If the given value is not a binding, it will
@@ -67,7 +50,6 @@ end
 
 return {
 	isBinding = isBinding,
-	toBinding = toBinding,
 	getBindingValue = getBindingValue,
 	getBindingApi = getBindingApi,
 }

@@ -1,6 +1,6 @@
 local React = require(script.Parent.Parent.modules.React)
 local binding = require(script.Parent.Parent.utils.binding)
-local useBindingListener = require(script.Parent.useBindingListener)
+local useBindingListener = require(script.Parent.useBindingListener).useBindingListener
 local useState = React.useState
 local getBindingValue = binding.getBindingValue
 

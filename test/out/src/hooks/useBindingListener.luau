@@ -1,6 +1,6 @@
 local React = require(script.Parent.Parent.modules.React)
 local binding = require(script.Parent.Parent.utils.binding)
-local useLatestCallback = require(script.Parent.useLatestCallback)
+local useLatestCallback = require(script.Parent.useLatestCallback).useLatestCallback
 local useEffect = React.useEffect
 local useMemo = React.useMemo
 local getBindingApi = binding.getBindingApi

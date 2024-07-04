@@ -1,15 +1,14 @@
-local Package = script.Parent.Parent
-local Packages = if Package.Parent:FindFirstChild("React")
-	then Package.Parent
-	else Package.Parent:FindFirstChild("ReactLua")
+local packages = if script.Parent.Parent.Parent.Parent:FindFirstChild("React")
+	then script.Parent.Parent.Parent.Parent
+	else script.Parent.Parent.Parent.Parent:FindFirstChild("ReactLua")
 
-type React = typeof(require(Package.Parent.React))
+assert(packages, `Could not find React or ReactLua in {script.Parent.Parent:GetFullName()}`)
 
-local React: React
+type React = typeof(require(script.Parent.Parent.React))
 
-return function()
-	if not React then
-		React = Packages and require(Packages.React) :: React
-	end
-	return React
-end
+export type Context<T> = typeof((function()
+	local React = require(script.Parent.Parent.React)
+	return {} :: React.Context<T>
+end)())
+
+return require(packages.React) :: React

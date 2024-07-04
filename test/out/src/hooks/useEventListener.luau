@@ -1,7 +1,5 @@
 local React = require(script.Parent.Parent.modules.React)
-local useLatest = require(script.Parent.useLatest)
-local TS = _G[script]
-local useLatest = useLatest
+local useLatest = require(script.Parent.useLatest).useLatest
 
 local connect = function(event, callback)
 	local _event = event

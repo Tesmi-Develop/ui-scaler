@@ -12,8 +12,12 @@ declare namespace UIScaler {
 
 	export interface usePxApi {
 		(value: number): number;
+		position: (x: number, y: number) => UDim2;
+		unscale: (value: number) => number;
+		udim2: (x: number, y: number) => UDim2;
+		udim: (value: number) => UDim;
 	}
 }
 
 export = UIScaler;
-export as namespace Charm;
+export as namespace UIScaler;

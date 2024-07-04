@@ -12,6 +12,9 @@ return function(bindingScale, camera, baseResolution)
 					local vector = Math.CalculatePosition(Vector2.new(x, y), camera.ViewportSize, baseResolution)
 					return UDim2.fromOffset(vector.X, vector.Y)
 				end;
+				unscale = function(value: number)
+					return math.round(value / scale)
+				end;
 				udim2 = function(x: number, y: number)
 					return UDim2.fromOffset(math.round(x * scale), math.round(y * scale))
 				end;

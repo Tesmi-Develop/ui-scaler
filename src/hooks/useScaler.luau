@@ -3,6 +3,7 @@ local useCamera = require(script.Parent.useCamera)
 local useEventListener = require(script.Parent.useEventListener).useEventListener
 local Math = require(script.Parent.Parent.utils.math)
 local usePx = require(script.Parent.usePx)
+local useUnscale = require(script.Parent.useUnscale)
 
 local function useScaler(baseResolution: Vector2)
     local camera = useCamera()
@@ -17,7 +18,14 @@ local function useScaler(baseResolution: Vector2)
 	return React.useMemo(function()
         return {
             scale = bindingScale;
-            usePx = usePx(bindingScale, camera, baseResolution)
+            useUnscale = useUnscale(bindingScale);
+            calculate = function(v: number)
+                return bindingScale:getValue() * v
+            end;
+            unscale = function(v: number)
+                return v / bindingScale:getValue()
+            end;
+            usePx = usePx(bindingScale, camera, baseResolution);
         }
     end)
 end

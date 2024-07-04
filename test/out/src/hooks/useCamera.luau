@@ -1,6 +1,6 @@
 local Workspace = game:GetService("Workspace")
 local React = require(script.Parent.Parent.modules.React)
-local useEventListener = require(script.Parent.useEventListener)
+local useEventListener = require(script.Parent.useEventListener).useEventListener
 
 local function useCamera()
 	local camera, setCamera = React.useState(Workspace.CurrentCamera)
