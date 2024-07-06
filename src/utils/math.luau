@@ -17,14 +17,14 @@ local function CalculateScale(viewport: Vector2, baseResolution: Vector2)
     return 2 ^ centered
 end
 
-local function CalculatePosition(vector: Vector2, viewport: Vector2, baseResolution: Vector2)
+local function CalculateScaleVector(viewport: Vector2, baseResolution: Vector2)
     local width = math.log(viewport.X / baseResolution.X, 2)
     local height = math.log(viewport.Y / baseResolution.Y, 2)
 
-    return Vector2.new(math.round(vector.X * 2 ^ width), math.round(vector.Y * 2 ^ height))
+    return Vector2.new(2 ^ width, 2 ^ height)
 end
 
 return {
 	CalculateScale = CalculateScale;
-	CalculatePosition = CalculatePosition;
+    CalculateScaleVector = CalculateScaleVector;
 }

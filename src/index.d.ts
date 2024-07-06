@@ -4,14 +4,20 @@ declare namespace UIScaler {
 	export function useScaler(baseResolution: Vector2): ScalerApi;
 
 	export interface ScalerApi {
+		// Binding
 		scale: Binding<number>;
-		calculate: (value: number) => number;
-		unscale: (value: number) => number;
-		usePx: () => usePxApi;
-		useUnscale: () => (value: number) => number;
+		scaleVector: () => Binding<Vector2>;
+
+		// Calculation
+		px: СalculatorApi;
+		unscale: СalculatorApi;
+
+		// Hooks
+		usePx: () => СalculatorApi;
+		useUnscale: () => СalculatorApi;
 	}
 
-	export interface usePxApi {
+	export interface СalculatorApi {
 		(value: number): number;
 		position: (x: number, y: number) => UDim2;
 		udim2: (x: number, y: number) => UDim2;
