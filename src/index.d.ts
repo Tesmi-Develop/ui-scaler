@@ -6,7 +6,7 @@ declare namespace UIScaler {
 	export interface ScalerApi {
 		// Binding
 		scale: Binding<number>;
-		scaleVector: () => Binding<Vector2>;
+		scaleVector: Binding<Vector2>;
 
 		// Calculation
 		px: СalculatorApi;
