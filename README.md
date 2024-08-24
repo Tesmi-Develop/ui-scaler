@@ -1,5 +1,5 @@
 # 📐 UI Scaler
-This library will allow you to scalable ui
+This library will allow you to scale ui
 
 # ☄️ Installation
 
