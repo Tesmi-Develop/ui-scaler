@@ -35,5 +35,4 @@ scaleApi.useUnscale();
 ```
 
 # ❤️ Credits
-SUMER (Discord: sumer_real)\
 Tesmi (Discord: tesmi)
