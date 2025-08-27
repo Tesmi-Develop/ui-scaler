@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/ui-scaler",
-  "version": "0.2.1",
+  "version": "0.2.6",
   "description": "",
   "scripts": {
     "lint": "sh bin/check.sh",
@@ -17,7 +17,7 @@
     "typescript",
     "roblox-ts"
   ],
-  "author": "melonbytes",
+  "author": "tesmi",
   "license": "MIT",
   "files": [
     "src",
